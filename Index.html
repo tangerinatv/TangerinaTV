@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tangerina TV</title>
+    <style>
+        /* Reset e Configurações Globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0a0118, #18032b, #2e0d00);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            position: relative;
+        }
+
+        /* Cartão Central Futurista (Efeito Glassmorphism) */
+        .container {
+            text-align: center;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 3rem 5rem;
+            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 123, 0, 0.3);
+            box-shadow: 0 0 30px rgba(255, 102, 0, 0.25),
+                        inset 0 0 15px rgba(255, 123, 0, 0.1);
+        }
+
+        /* Título Estilo Neon Tangerina */
+        h1 {
+            font-size: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: #ffffff;
+            text-shadow: 
+                0 0 10px #ff7b00,
+                0 0 20px #ff7b00,
+                0 0 40px #ff4500,
+                0 0 80px #e63900;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #ffb703;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 0 8px rgba(255, 183, 3, 0.6);
+        }
+
+        /* Fundo de Bolhas Flutuantes */
+        .bubbles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 166, 0, 0.8), rgba(255, 69, 0, 0.15));
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 123, 0, 0.6), inset 0 0 12px rgba(255, 255, 255, 0.8);
+            animation: rise 10s infinite ease-in-out;
+        }
+
+        /* Diferentes tamanhos, posições e tempos para as bolhas */
+        .bubble:nth-child(1) { width: 50px; height: 50px; left: 10%; animation-duration: 9s; animation-delay: 0s; }
+        .bubble:nth-child(2) { width: 90px; height: 90px; left: 25%; animation-duration: 13s; animation-delay: 1.5s; }
+        .bubble:nth-child(3) { width: 30px; height: 30px; left: 40%; animation-duration: 7s; animation-delay: 3s; }
+        .bubble:nth-child(4) { width: 60px; height: 60px; left: 55%; animation-duration: 11s; animation-delay: 0.5s; }
+        .bubble:nth-child(5) { width: 80px; height: 80px; left: 70%; animation-duration: 14s; animation-delay: 2s; }
+        .bubble:nth-child(6) { width: 35px; height: 35px; left: 85%; animation-duration: 8s; animation-delay: 1s; }
+        .bubble:nth-child(7) { width: 110px; height: 110px; left: 92%; animation-duration: 12s; animation-delay: 4s; }
+
+        /* Animação de subida das bolhas */
+        @keyframes rise {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.8;
+            }
+            80% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-120vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bolhas de Fundo -->
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <!-- Conteúdo da Tangerina TV -->
+    <div class="container">
+        <h1>TANGERINA TV</h1>
+        <p>O Futuro da Transmissão</p>
+    </div>
+
+</body>
+</html>
