@@ -1,5 +1,7 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-PT">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +12,11 @@
     <meta name="theme-color" content="#0b0f14">
 
     <style>
+
+        /* =========================
+           RESET
+           ========================= */
+
         * {
             margin: 0;
             padding: 0;
@@ -19,32 +26,43 @@
         html,
         body {
             width: 100%;
-            height: 100%;
-            overflow: hidden;
+            min-height: 100%;
         }
 
         body {
+            min-height: 100vh;
+            overflow-x: hidden;
+
             font-family: Arial, Helvetica, sans-serif;
+
             background:
-                radial-gradient(circle at 50% 45%,
+                radial-gradient(
+                    circle at 50% 45%,
                     rgba(255, 102, 0, 0.10) 0%,
                     rgba(255, 102, 0, 0.035) 22%,
-                    transparent 48%),
-                radial-gradient(circle at 20% 20%,
+                    transparent 48%
+                ),
+                radial-gradient(
+                    circle at 20% 20%,
                     rgba(255, 150, 0, 0.06),
-                    transparent 35%),
-                linear-gradient(135deg,
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
                     #05070a 0%,
                     #0a0f15 45%,
-                    #070a0e 100%);
+                    #070a0e 100%
+                );
 
             display: flex;
             align-items: center;
             justify-content: center;
 
             position: relative;
+
             color: white;
         }
+
 
         /* =========================
            FUNDO
@@ -53,12 +71,17 @@
         .background {
             position: fixed;
             inset: 0;
+
             overflow: hidden;
             pointer-events: none;
+
             z-index: 0;
         }
 
-        /* brilho central */
+
+        /* =========================
+           BRILHO CENTRAL
+           ========================= */
 
         .glow {
             position: absolute;
@@ -80,6 +103,7 @@
 
             filter: blur(20px);
         }
+
 
         /* =========================
            BOLHAS
@@ -108,6 +132,11 @@
             border-color: rgba(255, 110, 0, 0.08);
         }
 
+
+        /* =========================
+           ANIMAÇÃO DAS BOLHAS
+           ========================= */
+
         @keyframes float {
 
             0% {
@@ -118,6 +147,7 @@
                 transform: translateY(-120vh) translateX(40px);
             }
         }
+
 
         @keyframes pulse {
 
@@ -130,6 +160,7 @@
             }
         }
 
+
         /* =========================
            CONTEÚDO
            ========================= */
@@ -139,9 +170,9 @@
             z-index: 10;
 
             width: 100%;
-            max-width: 1300px;
+            max-width: 1200px;
 
-            padding: 40px;
+            padding: 40px 30px;
 
             display: flex;
             flex-direction: column;
@@ -151,12 +182,13 @@
             text-align: center;
         }
 
+
         /* =========================
            LOGO
            ========================= */
 
         .logo-wrapper {
-            width: min(90vw, 1100px);
+            width: min(70vw, 700px);
 
             animation: logoAppear 1.4s ease-out forwards;
 
@@ -171,11 +203,14 @@
             display: block;
         }
 
+
         @keyframes logoAppear {
 
             0% {
                 opacity: 0;
+
                 transform: scale(0.90);
+
                 filter:
                     blur(10px)
                     drop-shadow(0 0 0 transparent);
@@ -187,6 +222,7 @@
             }
         }
 
+
         /* =========================
            LINHA DECORATIVA
            ========================= */
@@ -195,7 +231,7 @@
             width: 180px;
             height: 2px;
 
-            margin-top: 28px;
+            margin-top: 24px;
 
             background: linear-gradient(
                 90deg,
@@ -209,8 +245,10 @@
             box-shadow:
                 0 0 12px rgba(255, 100, 0, 0.5);
 
-            animation: lineAppear 1.5s ease-out 0.5s both;
+            animation:
+                lineAppear 1.5s ease-out 0.5s both;
         }
+
 
         @keyframes lineAppear {
 
@@ -225,12 +263,13 @@
             }
         }
 
+
         /* =========================
            TEXTO
            ========================= */
 
         .subtitle {
-            margin-top: 22px;
+            margin-top: 18px;
 
             font-size: clamp(12px, 1.4vw, 18px);
 
@@ -243,6 +282,7 @@
             animation:
                 textAppear 1.5s ease-out 0.8s both;
         }
+
 
         @keyframes textAppear {
 
@@ -257,12 +297,13 @@
             }
         }
 
+
         /* =========================
            INDICADOR
            ========================= */
 
         .status {
-            margin-top: 35px;
+            margin-top: 25px;
 
             display: flex;
             align-items: center;
@@ -291,6 +332,7 @@
             animation: statusPulse 1.8s infinite;
         }
 
+
         @keyframes statusPulse {
 
             0%,
@@ -305,6 +347,100 @@
             }
         }
 
+
+        /* =========================
+           BOTÕES MOL
+           ========================= */
+
+        .mol-buttons {
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 24px;
+
+            width: 100%;
+
+            margin-top: 35px;
+
+            animation:
+                textAppear 1.5s ease-out 1.3s both;
+        }
+
+
+        .mol-button {
+            display: block;
+
+            width: 190px;
+            height: 115px;
+
+            padding: 8px;
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            background: rgba(255, 255, 255, 0.035);
+
+            border: 1px solid rgba(255, 100, 0, 0.20);
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.35),
+                0 0 15px rgba(255, 90, 0, 0.08);
+
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                background 0.3s ease;
+        }
+
+
+        .mol-button img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            display: block;
+
+            border-radius: 10px;
+        }
+
+
+        /* =========================
+           HOVER DOS BOTÕES
+           ========================= */
+
+        .mol-button:hover {
+            transform: translateY(-7px) scale(1.03);
+
+            background: rgba(255, 100, 0, 0.06);
+
+            border-color: rgba(255, 100, 0, 0.70);
+
+            box-shadow:
+                0 14px 35px rgba(0, 0, 0, 0.50),
+                0 0 28px rgba(255, 90, 0, 0.25);
+        }
+
+
+        .mol-button:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+
+
+        /* =========================
+           ACESSIBILIDADE
+           ========================= */
+
+        .mol-button:focus-visible {
+            outline: 2px solid #ff9d32;
+            outline-offset: 5px;
+        }
+
+
         /* =========================
            MOBILE
            ========================= */
@@ -312,31 +448,110 @@
         @media (max-width: 600px) {
 
             .container {
-                padding: 25px;
+                padding: 30px 20px;
             }
 
+
             .logo-wrapper {
-                width: 92vw;
+                width: 82vw;
+                max-width: 500px;
             }
+
+
+            .line {
+                margin-top: 18px;
+            }
+
 
             .subtitle {
                 letter-spacing: 3px;
                 font-size: 10px;
             }
 
-            .line {
+
+            .status {
                 margin-top: 20px;
             }
 
-            .status {
-                margin-top: 25px;
+
+            .mol-buttons {
+                gap: 10px;
+                margin-top: 28px;
             }
+
+
+            .mol-button {
+                width: 29vw;
+                height: 82px;
+
+                padding: 5px;
+
+                border-radius: 12px;
+            }
+
+
+            .mol-button img {
+                border-radius: 8px;
+            }
+
+        }
+
+
+        /* =========================
+           ECRÃS MUITO PEQUENOS
+           ========================= */
+
+        @media (max-width: 380px) {
+
+            .container {
+                padding: 20px 15px;
+            }
+
+
+            .logo-wrapper {
+                width: 86vw;
+            }
+
+
+            .mol-buttons {
+                gap: 7px;
+                margin-top: 22px;
+            }
+
+
+            .mol-button {
+                width: 30vw;
+                height: 70px;
+
+                padding: 4px;
+            }
+
+        }
+
+
+        /* =========================
+           REDUZIR ANIMAÇÕES
+           ========================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
         }
 
     </style>
+
 </head>
 
+
 <body>
+
 
     <!-- =========================
          FUNDO ANIMADO
@@ -345,6 +560,9 @@
     <div class="background">
 
         <div class="glow"></div>
+
+
+        <!-- primeira camada -->
 
         <div class="bubble orange"
              style="width:18px;height:18px;left:4%;animation-duration:18s,3s;animation-delay:-4s,0s;"></div>
@@ -388,6 +606,7 @@
         <div class="bubble orange"
              style="width:9px;height:9px;left:95%;animation-duration:20s,3s;animation-delay:-9s,0s;"></div>
 
+
         <!-- segunda camada -->
 
         <div class="bubble"
@@ -414,28 +633,105 @@
 
     <main class="container">
 
+
+        <!-- LOGO -->
+
         <div class="logo-wrapper">
 
             <img
                 class="logo"
-                src="https://tangerinatv.github.io/TangerinaTV/imagens/logotangerina.png"
+                src="imagens/logotangerina.png"
                 alt="Tangerina TV"
             >
 
         </div>
 
+
+        <!-- LINHA -->
+
         <div class="line"></div>
+
+
+        <!-- SUBTÍTULO -->
 
         <div class="subtitle">
             A sua televisão
         </div>
 
+
+        <!-- STATUS -->
+
         <div class="status">
+
             <span class="status-dot"></span>
-            Tangerina TV
+
+            <span>Tangerina TV</span>
+
         </div>
+
+
+        <!-- =========================
+             BOTÕES MOL
+             ========================= -->
+
+        <div class="mol-buttons">
+
+
+            <!-- MOL 2 -->
+
+            <a
+                href="mol2.html"
+                class="mol-button"
+                aria-label="Abrir MOL 2"
+            >
+
+                <img
+                    src="imagens/mol2.png"
+                    alt="MOL 2"
+                >
+
+            </a>
+
+
+            <!-- MOL 3 -->
+
+            <a
+                href="mol3.html"
+                class="mol-button"
+                aria-label="Abrir MOL 3"
+            >
+
+                <img
+                    src="imagens/mol3.png"
+                    alt="MOL 3"
+                >
+
+            </a>
+
+
+            <!-- MOL 4 -->
+
+            <a
+                href="mol4.html"
+                class="mol-button"
+                aria-label="Abrir MOL 4"
+            >
+
+                <img
+                    src="imagens/mol4.png"
+                    alt="MOL 4"
+                >
+
+            </a>
+
+
+        </div>
+
 
     </main>
 
+
 </body>
+
 </html>
+```
