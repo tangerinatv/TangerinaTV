@@ -1,443 +1,624 @@
 <!DOCTYPE html>
-
 <html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<title>MyTvOnline 2 - Tangerina TV</title>
+    <title>MyTvOnline 3 - Tangerina TV</title>
 
-<style>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        background:
-            radial-gradient(circle at top, #3a1600 0%, #160900 35%, #050505 75%);
-        color: #ffffff;
-        min-height: 100vh;
-        padding-bottom: 50px;
-    }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at top, #3a1600 0%, #160900 35%, #050505 75%);
+            color: #ffffff;
+            min-height: 100vh;
+            padding-bottom: 50px;
+        }
 
-    /* TOPO */
-    header {
-        text-align: center;
-        padding: 25px 15px 15px;
-    }
+        /* =========================
+           TOPO
+        ========================= */
 
-    .top-logos {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 18px;
-        flex-wrap: wrap;
-        margin-bottom: 18px;
-    }
-
-    .top-logo-mol2 {
-        width: 110px;
-        height: 110px;
-        object-fit: contain;
-    }
-
-    .top-logo-input {
-        width: 90px;
-        height: 90px;
-        object-fit: contain;
-    }
-
-    .codigo {
-        font-size: 30px;
-        font-weight: bold;
-        letter-spacing: 3px;
-        color: #ff8c00;
-        text-shadow: 0 0 12px rgba(255, 140, 0, 0.7);
-        background: rgba(0, 0, 0, 0.45);
-        padding: 12px 18px;
-        border-radius: 12px;
-        border: 1px solid rgba(255, 140, 0, 0.4);
-    }
-
-    header h1 {
-        font-size: clamp(28px, 6vw, 48px);
-        color: #ff8c00;
-        margin-bottom: 8px;
-        text-shadow: 0 0 15px rgba(255, 140, 0, 0.6);
-    }
-
-    header p {
-        color: #dddddd;
-        font-size: 16px;
-    }
-
-    /* BOTÃO VOLTAR */
-    .voltar {
-        display: inline-block;
-        margin: 10px 0 25px;
-        padding: 12px 22px;
-        background: linear-gradient(135deg, #ff8c00, #ff5a00);
-        color: white;
-        text-decoration: none;
-        border-radius: 10px;
-        font-weight: bold;
-        transition: 0.25s ease;
-        box-shadow: 0 0 15px rgba(255, 100, 0, 0.3);
-    }
-
-    .voltar:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 0 25px rgba(255, 120, 0, 0.6);
-    }
-
-    /* CONTEÚDO */
-    .container {
-        width: min(95%, 1000px);
-        margin: auto;
-    }
-
-    .versao {
-        background: rgba(20, 10, 5, 0.9);
-        border: 1px solid rgba(255, 140, 0, 0.35);
-        border-radius: 18px;
-        padding: 25px;
-        margin-bottom: 30px;
-        box-shadow: 0 0 30px rgba(255, 100, 0, 0.12);
-    }
-
-    .versao h2 {
-        color: #ff8c00;
-        font-size: 28px;
-        margin-bottom: 8px;
-    }
-
-    .modelos {
-        color: #bbbbbb;
-        margin-bottom: 20px;
-    }
-
-    /* VÍDEO */
-    .video-container {
-        width: 100%;
-        margin: 20px 0 25px;
-        text-align: center;
-    }
-
-    video {
-        width: 100%;
-        max-height: 600px;
-        border-radius: 12px;
-        background: #000;
-        border: 1px solid rgba(255, 140, 0, 0.35);
-    }
-
-    /* PASSOS */
-    .passos {
-        list-style: none;
-        counter-reset: passos;
-    }
-
-    .passos li {
-        position: relative;
-        margin-bottom: 14px;
-        padding: 15px 18px 15px 55px;
-        background: rgba(255, 255, 255, 0.045);
-        border-radius: 10px;
-        border-left: 3px solid #ff8c00;
-        line-height: 1.5;
-    }
-
-    .passos li::before {
-        counter-increment: passos;
-        content: counter(passos);
-        position: absolute;
-        left: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 28px;
-        height: 28px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #ff8c00;
-        color: #000;
-        font-weight: bold;
-        border-radius: 50%;
-    }
-
-    .destaque {
-        color: #ff9d2e;
-        font-weight: bold;
-    }
-
-    .aviso {
-        background: rgba(180, 40, 0, 0.18);
-        border: 1px solid rgba(255, 80, 0, 0.5);
-        color: #ffb08a;
-        padding: 15px;
-        border-radius: 10px;
-        margin: 15px 0 20px;
-        font-weight: bold;
-    }
-
-    .cores {
-        font-size: 28px;
-        letter-spacing: 5px;
-    }
-
-    /* RODAPÉ */
-    footer {
-        text-align: center;
-        color: #777;
-        margin-top: 40px;
-        font-size: 14px;
-    }
-
-    /* MOBILE */
-    @media (max-width: 600px) {
         header {
-            padding-top: 18px;
+            text-align: center;
+            padding: 25px 15px 15px;
         }
 
         .top-logos {
-            gap: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
         }
 
-        .top-logo-mol2 {
-            width: 85px;
-            height: 85px;
+        .top-logo-mol3 {
+            width: 110px;
+            height: 110px;
+            object-fit: contain;
         }
 
         .top-logo-input {
-            width: 70px;
-            height: 70px;
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
         }
 
         .codigo {
-            font-size: 22px;
-            padding: 10px 13px;
-            letter-spacing: 2px;
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: #ff8c00;
+
+            text-shadow:
+                0 0 12px rgba(255, 140, 0, 0.7);
+
+            background: rgba(0, 0, 0, 0.45);
+
+            padding: 12px 18px;
+
+            border-radius: 12px;
+
+            border: 1px solid rgba(255, 140, 0, 0.4);
         }
 
+        header p {
+            color: #dddddd;
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           BOTÃO VOLTAR
+        ========================= */
+
+        .voltar {
+            display: inline-block;
+
+            margin: 10px 0 25px;
+
+            padding: 12px 22px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff8c00,
+                    #ff5a00
+                );
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 10px;
+
+            font-weight: bold;
+
+            transition: 0.25s ease;
+
+            box-shadow:
+                0 0 15px rgba(255, 100, 0, 0.3);
+        }
+
+        .voltar:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 0 25px rgba(255, 120, 0, 0.6);
+        }
+
+
+        /* =========================
+           CONTEÚDO
+        ========================= */
+
+        .container {
+            width: min(95%, 1000px);
+            margin: auto;
+        }
+
+
+        /* =========================
+           SECÇÃO MYTVONLINE 3
+        ========================= */
+
         .versao {
-            padding: 18px;
+            background:
+                rgba(20, 10, 5, 0.9);
+
+            border:
+                1px solid rgba(255, 140, 0, 0.35);
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            margin-bottom: 30px;
+
+            box-shadow:
+                0 0 30px rgba(255, 100, 0, 0.12);
         }
 
         .versao h2 {
-            font-size: 24px;
+            color: #ff8c00;
+
+            font-size: 28px;
+
+            margin-bottom: 8px;
+        }
+
+        .modelos {
+            color: #bbbbbb;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================
+           VÍDEO
+        ========================= */
+
+        .video-container {
+            width: 100%;
+
+            margin: 20px 0 25px;
+
+            text-align: center;
+        }
+
+        video {
+            width: 100%;
+
+            max-height: 600px;
+
+            border-radius: 12px;
+
+            background: #000;
+
+            border:
+                1px solid rgba(255, 140, 0, 0.35);
+
+            display: block;
+        }
+
+
+        /* =========================
+           PASSOS
+        ========================= */
+
+        .passos {
+            list-style: none;
+
+            counter-reset: passos;
         }
 
         .passos li {
-            padding-left: 48px;
+            position: relative;
+
+            margin-bottom: 14px;
+
+            padding:
+                15px
+                18px
+                15px
+                55px;
+
+            background:
+                rgba(255, 255, 255, 0.045);
+
+            border-radius: 10px;
+
+            border-left:
+                3px solid #ff8c00;
+
+            line-height: 1.5;
         }
+
+        .passos li::before {
+            counter-increment: passos;
+
+            content: counter(passos);
+
+            position: absolute;
+
+            left: 15px;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            width: 28px;
+            height: 28px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: #ff8c00;
+
+            color: #000;
+
+            font-weight: bold;
+
+            border-radius: 50%;
+        }
+
+
+        /* =========================
+           TEXTO DESTACADO
+        ========================= */
+
+        .destaque {
+            color: #ff9d2e;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           AVISO
+        ========================= */
+
+        .aviso {
+            background:
+                rgba(180, 40, 0, 0.18);
+
+            border:
+                1px solid rgba(255, 80, 0, 0.5);
+
+            color: #ffb08a;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+            margin: 15px 0 5px;
+
+            font-weight: bold;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           CORES DO COMANDO
+        ========================= */
 
         .cores {
-            font-size: 22px;
-            letter-spacing: 2px;
-        }
-    }
+            font-size: 28px;
 
-    @media (prefers-reduced-motion: reduce) {
-        * {
-            scroll-behavior: auto !important;
-        }
-    }
-</style>
-```
+            letter-spacing: 5px;
 
+            margin-top: 8px;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           RODAPÉ
+        ========================= */
+
+        footer {
+            text-align: center;
+
+            color: #777;
+
+            margin-top: 40px;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding-top: 18px;
+            }
+
+            .top-logos {
+                gap: 10px;
+            }
+
+            .top-logo-mol3 {
+                width: 85px;
+                height: 85px;
+            }
+
+            .top-logo-input {
+                width: 70px;
+                height: 70px;
+            }
+
+            .codigo {
+                font-size: 22px;
+
+                padding:
+                    10px
+                    13px;
+
+                letter-spacing: 2px;
+            }
+
+            .versao {
+                padding: 18px;
+            }
+
+            .versao h2 {
+                font-size: 24px;
+            }
+
+            .passos li {
+                padding-left: 48px;
+            }
+
+            .cores {
+                font-size: 22px;
+
+                letter-spacing: 2px;
+            }
+        }
+
+
+        /* =========================
+           ACESSIBILIDADE
+        ========================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            * {
+                scroll-behavior: auto !important;
+            }
+        }
+
+    </style>
 </head>
+
 
 <body>
 
+
+<!-- =========================
+     CABEÇALHO
+========================= -->
+
 <header>
 
-```
-<!-- LOGOS + CÓDIGO -->
-<div class="top-logos">
+    <div class="top-logos">
 
-    <img
-        src="imagens/mol4.png"
-        alt="MyTvOnline 4"
-        class="top-logo-mol2"
-    >
+        <!-- LOGO MYTVONLINE 4 -->
 
-    <img
-        src="imagens/input.png"
-        alt="Input Code"
-        class="top-logo-input"
-    >
+        <img
+            src="imagens/mol4.png"
+            alt="MyTvOnline 4"
+            class="top-logo-mol3"
+        >
 
-    <div class="codigo">
-        1398335C
+
+        <!-- LOGO INPUT CODE -->
+
+        <img
+            src="imagens/input.png"
+            alt="Input Code"
+            class="top-logo-input"
+        >
+
+
+        <!-- CÓDIGO -->
+
+        <div class="codigo">
+            1398335C
+        </div>
+
     </div>
 
-</div>
 
-<p>
-    Instruções para configurar a sua televisão
-</p>
+    <p>
+        Instruções para configurar a sua televisão
+    </p>
 
-<a href="Index.html" class="voltar">
-    ← Voltar
-</a>
-```
+
+    <!-- VOLTAR -->
+
+    <a
+        href="Index.html"
+        class="voltar"
+    >
+        ← Voltar
+    </a>
 
 </header>
 
+
+
+<!-- =========================
+     CONTEÚDO
+========================= -->
+
 <main class="container">
 
-```
-<!-- ========================= -->
-<!-- MYTVONLINE 2 V1 -->
-<!-- ========================= -->
 
-<section class="versao">
+    <section class="versao">
 
-    <h2>MyTvOnline 2 V1</h2>
 
-    <p class="modelos">
-        Z+NEO / Z Alpha / Z8 / Z8 Pro
-    </p>
+        <!-- TÍTULO -->
 
-    <div class="video-container">
-        <video controls playsinline preload="metadata">
-            <source
-                src="videos/formuler_zneo_inputcode.mp4"
-                type="video/mp4"
+        <h2>
+            MyTvOnline 3
+        </h2>
+
+
+        <p class="modelos">
+            Configuração MyTvOnline 3
+        </p>
+
+
+
+        <!-- =========================
+             VÍDEO
+        ========================= -->
+
+        <div class="video-container">
+
+            <video
+                controls
+                playsinline
+                preload="metadata"
             >
 
-            O seu navegador não suporta vídeos HTML5.
-        </video>
-    </div>
+                <source
+                    src="videos/mytvonline3.webm"
+                    type="video/webm"
+                >
 
-    <ol class="passos">
+                O seu navegador não suporta vídeos HTML5.
 
-        <li>
-            Entre em <span class="destaque">Definições</span>.
-        </li>
+            </video>
 
-        <li>
-            Entre em
-            <span class="destaque">
-                Armazenamento e Reposição
-            </span>.
-        </li>
-
-        <li>
-            Escolha <span class="destaque">Restore</span>.
-
-            <div class="aviso">
-                ⚠️ NÃO pressionar OK
-            </div>
-        </li>
-
-        <li>
-            Pressione a sequência:
-            <div class="cores">
-                🔴 ➡️ 🟢 ➡️ 🟡 ➡️ 🔵
-            </div>
-        </li>
-
-        <li>
-            Aparecerá a opção
-            <span class="destaque">Input Code</span>.
-            Insira o código fornecido.
-        </li>
-
-        <li>
-            Pressione <span class="destaque">Enter</span>
-            ou selecione
-            <span class="destaque">
-                Aplicar &amp; Reiniciar
-            </span>.
-        </li>
-
-    </ol>
-
-</section>
+        </div>
 
 
-<!-- ========================= -->
-<!-- MYTVONLINE 2 V2 -->
-<!-- ========================= -->
 
-<section class="versao">
+        <!-- =========================
+             INSTRUÇÕES
+        ========================= -->
 
-    <h2>MyTvOnline 2 V2</h2>
+        <ol class="passos">
 
-    <p class="modelos">
-        Z10 / Z10 Pro / Z10 Pro Max / Z10SE / Z10 Neo / Z Mini
-    </p>
 
-    <div class="video-container">
-        <video controls playsinline preload="metadata">
+            <!-- PASSO 1 -->
 
-            <source
-                src="videos/mytvonline2.webm"
-                type="video/webm"
-            >
+            <li>
 
-            O seu navegador não suporta vídeos HTML5.
+                Aceda às
 
-        </video>
-    </div>
+                <span class="destaque">
+                    Definições ⚙️
+                </span>.
 
-    <ol class="passos">
+            </li>
 
-        <li>
-            Entre em
-            <span class="destaque">
-                Informações do Sistema
-            </span>.
-        </li>
 
-        <li>
-            Entre em
-            <span class="destaque">
-                Data de Implementação
-            </span>.
 
-            <div class="aviso">
-                ⚠️ Atenção às instruções apresentadas no ecrã.
-            </div>
-        </li>
+            <!-- PASSO 2 -->
 
-        <li>
-            Pressione a sequência:
-            <div class="cores">
-                🔴 ➡️ 🟢 ➡️ 🟡 ➡️ 🔵
-            </div>
-        </li>
+            <li>
 
-        <li>
-            Insira o
-            <span class="destaque">
-                código fornecido
-            </span>.
-        </li>
+                Entre em
 
-        <li>
-            Pressione <span class="destaque">Enter</span>
-            ou selecione
-            <span class="destaque">
-                Aplicar &amp; Reiniciar
-            </span>.
-        </li>
+                <span class="destaque">
+                    Informações do Sistema
+                </span>.
 
-    </ol>
+            </li>
 
-</section>
-```
+
+
+            <!-- PASSO 3 -->
+
+            <li>
+
+                Entre em
+
+                <span class="destaque">
+                    Data de Implementação
+                </span>.
+
+
+                <div class="aviso">
+
+                    ⚠️ NÃO pressionar OK ⚠️
+
+                </div>
+
+            </li>
+
+
+
+            <!-- PASSO 4 -->
+
+            <li>
+
+                Pressione a sequência:
+
+
+                <div class="cores">
+
+                    🔴 ➡️ 🟢 ➡️ 🟡 ➡️ 🔵
+
+                </div>
+
+            </li>
+
+
+
+            <!-- PASSO 5 -->
+
+            <li>
+
+                Insira o
+
+                <span class="destaque">
+                    código fornecido
+                </span>.
+
+            </li>
+
+
+
+            <!-- PASSO 6 -->
+
+            <li>
+
+                Pressione
+
+                <span class="destaque">
+                    Enter
+                </span>
+
+                ou selecione
+
+                <span class="destaque">
+                    Aplicar &amp; Reiniciar
+                </span>.
+
+            </li>
+
+
+        </ol>
+
+
+    </section>
+
 
 </main>
 
+
+
+<!-- =========================
+     RODAPÉ
+========================= -->
+
 <footer>
+
     Tangerina TV
+
 </footer>
+
 
 </body>
 </html>
